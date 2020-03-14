@@ -30,7 +30,10 @@ resource "rke_cluster" "cluster" {
 
 resource "aws_s3_bucket_object" "kube-config-yaml" {
 
-  depends_on = [aws_s3_bucket.k8s]
+  depends_on = [
+    aws_s3_bucket.k8s,
+    rke_cluster.cluster
+  ]
 
   bucket  = var.keys_bucket
   key     = "/${var.kube_config_filename}"
@@ -39,6 +42,8 @@ resource "aws_s3_bucket_object" "kube-config-yaml" {
 }
 
 resource "local_file" "kube-config-yaml" {
+
+  depends_on = [rke_cluster.cluster]
 
   filename = "generated/${var.kube_config_filename}"
   content  = rke_cluster.cluster.kube_config_yaml
@@ -49,7 +54,7 @@ resource "local_file" "kube-config-yaml" {
 
 resource "null_resource" "is-cluster-ready" {
 
-  depends_on = [rke_cluster.cluster]
+  depends_on = [rke_cluster.cluster.kube_config_yaml]
 
   connection {
     type        = "ssh"
