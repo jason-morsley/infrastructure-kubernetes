@@ -27,7 +27,7 @@ variable "kube_config_filename" {
 }
 
 variable "instance_type" {
-  default = "t2.xlarge"
+  default = "t2.2xlarge"  #8 Virtual CPUs, 32 Gbs of RAM.
 }
 
 variable "cluster_name" {
