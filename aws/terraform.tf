@@ -17,7 +17,7 @@ terraform {
   }
 
 #  backend "s3" {
-#    bucket         = "jasonmorsley-dev-terraform"
+#    bucket         = "jasonmorsley-io-terraform"
 #    key            = "infrastructure"
 #    region         = "eu-west-2"
 #    dynamodb_table = "tfstatelock-rancher-k8s"

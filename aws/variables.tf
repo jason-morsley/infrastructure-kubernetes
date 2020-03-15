@@ -15,15 +15,15 @@ variable "access_key" {}
 variable "secret_key" {}
 
 variable "key_name" {
-  default = "jasonmorsley-dev-rancher-k8s"
+  default = "jasonmorsley-io-rancher-k8s"
 }
 
 variable "keys_bucket" {
-  default = "jasonmorsley-dev-rancher"
+  default = "jasonmorsley-io-rancher"
 }
 
 variable "kube_config_filename" {
-  default = "jasonmorsley-dev-kube-config.yaml"
+  default = "jasonmorsley-io-kube-config.yaml"
 }
 
 variable "instance_type" {
@@ -31,14 +31,14 @@ variable "instance_type" {
 }
 
 variable "cluster_name" {
-  default = "jasonmorsley-dev"
+  default = "jasonmorsley-io"
 }
 
 # ToDo --> use throughout
 variable "hostname" {
-  default = "rancher.jasonmorsley.dev"
+  default = "rancher.jasonmorsley.io"
 }
 
 variable "domain_name" {
-  default = "jasonmorsley.dev"
+  default = "jasonmorsley.io"
 }

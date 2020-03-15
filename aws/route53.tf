@@ -6,4 +6,25 @@
 #   |_|  \_\___/ \__,_|\__\___| |____/|____/ 
 #
 
-# rancher.jasonmorsley.dev
+# rancher.jasonmorsley.io
+
+data "aws_route53_zone" "jasonmorsley-io" {
+
+  name         = var.domain_name
+  private_zone = false
+
+}
+
+resource "aws_route53_record" "rancher-a-record" {
+
+  zone_id = data.aws_route53_zone.jasonmorsley-io.zone_id
+  name    = var.hostname
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.k8s.public_ip]
+
+}
+
+output "route_53_name_servers" {
+  value = data.aws_route53_zone.jasonmorsley-io.name_servers
+}

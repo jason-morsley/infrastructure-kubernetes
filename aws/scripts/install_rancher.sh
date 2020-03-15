@@ -14,9 +14,9 @@ set -x
 
 echo $(pwd)
 
-export KUBECONFIG=$(pwd)/generated/jasonmorsley-dev-kube-config.yaml
+export KUBECONFIG=$(pwd)/generated/jasonmorsley-io-kube-config.yaml
 
-cat $(pwd)/generated/jasonmorsley-dev-kube-config.yaml
+#cat $(pwd)/generated/jasonmorsley-io-kube-config.yaml
 
 #kubectl get nodes
 
@@ -49,13 +49,12 @@ cat $(pwd)/generated/jasonmorsley-dev-kube-config.yaml
 #helm repo update
 
 # Install the cert-manager Helm chart
-#helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v0.13.1k
+#helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v0.13.1
 
 # --- Cert-Manager ---
 
 # 4. Install Rancher with Helm and the chosen certificate option
 
-#helm install rancher rancher-latest/rancher \
-#  --namespace cattle-system \
-#  --set hostname=rancher.my.org
+#helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 
+#helm install rancher rancher-stable/rancher --namespace cattle-system --set hostname=rancher.jasonmorsley.io

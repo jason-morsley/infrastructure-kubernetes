@@ -15,7 +15,7 @@ echo '##########################################################################
 
 #set -x
 
-export KUBECONFIG=$(pwd)/generated/jasonmorsley-dev-kube-config.yaml
+export KUBECONFIG=$(pwd)/generated/jasonmorsley-io-kube-config.yaml
 
 is_cluster_ready () {
 
